@@ -1,6 +1,6 @@
 {
   "name": "i18next-query-string",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
@@ -16,16 +16,13 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "build": "rimraf dist/* --glob && rollup -c",
+    "build": "rimraf dist/* --glob && tsc && rollup -c",
+    "postbuild": "cp package.json dist && cp README.md dist && cp LICENSE dist",
     "dev": "rimraf dist/* --glob && rollup -c -w",
     "test": "node test/test.js",
     "pretest": "npm run build",
-    "packCp": "npm run build && cp package.json dist && cp README.md dist && cp LICENSE dist && cd dist && npm pack"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "i18next": "^24.2.0"
+    "packCp": "npm run build && cd dist && npm pack",
+    "public": "npm run build && cd dist && npm publish",
+    "installLegacy": "npm install --legacy-peer-deps"
   }
 }

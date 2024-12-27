@@ -6,8 +6,17 @@
  * }
  * <Trans key='path.to?firstName=John'> => 'My name is John'
  */
-import { ModuleType } from 'i18next';
-import { TOptions } from 'i18next';
+
+export type ModuleType =
+    | 'backend'
+    | 'logger'
+    | 'languageDetector'
+    | 'postProcessor'
+    | 'i18nFormat'
+    | 'formatter'
+    | '3rdParty';
+
+export type TOptions = Record<string, unknown>;
 
 const PLUGIN_NAME = 'i18next-query-string';
 
@@ -106,4 +115,4 @@ const I18nextQueryString = {
     }
 };
 
-export default I18nextQueryString;
+export { I18nextQueryString };
